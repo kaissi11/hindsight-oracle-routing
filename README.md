@@ -4,11 +4,10 @@ Code, instance pools, checkpoints, and result data for the paper:
 
 **When Best-of-K Becomes a Hindsight Oracle: Auditing Test-Time Search in Dynamic Routing**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21316177.svg)](https://doi.org/10.5281/zenodo.21316177)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)
 [![GitHub](https://img.shields.io/badge/GitHub-kaissi11%2Fhindsight--oracle--routing-blue?logo=github)](https://github.com/kaissi11/hindsight-oracle-routing)
-
-> Zenodo DOI badge will be added after the `v1.0.0` release is archived. arXiv link TBD.
 
 ## What this is
 
@@ -91,12 +90,10 @@ The OSRM travel-time pools derive from OpenStreetMap data
   author  = {Al-Kaissi, Alaa},
   title   = {When Best-of-K Becomes a Hindsight Oracle: benchmark and code},
   year    = {2026},
+  doi     = {10.5281/zenodo.21316177},
   url     = {https://github.com/kaissi11/hindsight-oracle-routing},
   version = {1.0.0}
 }
 ```
-
-After Zenodo mints a DOI, add `doi = {10.5281/zenodo.XXXXXXX}` to the entry above
-(and to `CITATION.cff`).
 
 **Contact:** alaakaissi11@gmail.com · [ORCID](https://orcid.org/0009-0000-7121-0089)
