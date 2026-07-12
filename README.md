@@ -20,24 +20,41 @@ heuristic and budget-matched rolling OR-Tools on real road matrices (Damascus, L
 
 ## Repository layout
 
-Everything runnable lives under `code/` so scripts run unchanged:
-
 ```text
-code/
-  evaluation harness, disruption env v2, matched-information experiment,
-  suite runners, aggregation, equivalence / TOST analysis, figure scripts,
-  plus frozen model / baseline / utility modules
-  results/          instance pools + per-seed result JSONs
-  checkpoints_*/    policy checkpoints (research_best.pt = headline)
+hindsight-oracle-routing/
+├── README.md
+├── LICENSE
+├── CITATION.cff
+├── .zenodo.json
+├── requirements.txt
+└── code/
+    ├── scenario_bucket_eval_v2.py      # main online evaluation harness
+    ├── matched_information_eval.py     # §6.3a matched-information experiment
+    ├── research_env_v2.py              # disruption environment
+    ├── tsp_model_v2.py                 # policy model
+    ├── rolling_horizon_or_baseline.py  # OR-Tools baseline
+    ├── run_stage5_suites.py            # Table 3 suite runner
+    ├── run_review_experiments.py       # ablations / review queue
+    ├── aggregate_*.py                  # seed pooling
+    ├── equivalence_analysis.py         # TOST / equivalence tests
+    ├── make_paper_assets.py            # tables & figures
+    ├── checkpoints_research_pomo/
+    │   └── research_best.pt            # headline checkpoint
+    ├── checkpoints_research_v2_pomo/
+    │   └── research_v2_best.pt
+    └── results/
+        ├── osrm_instance_pool/         # Damascus OSRM pool
+        ├── osrm_instance_pool_london/  # London OSRM pool
+        ├── matched_information_aggregate.json
+        ├── scenario_bucket_*.json      # per-seed suite results
+        └── …                           # other aggregates / diagnostics
 ```
 
 **Large matched-information dumps.** The six per-seed files
 `matched_information_h{4,8}_seed_*.json` (~2 GB total) exceed GitHub’s 100 MB
 limit, so they are **not** in the git tree. Attach them as **release assets** when
 publishing `v1.0.0` (Zenodo will archive them with the release). The aggregate used
-for §6.3a tables is in-repo:
-
-`code/results/matched_information_aggregate.json`
+for §6.3a tables is in-repo at `code/results/matched_information_aggregate.json`.
 
 ## Quickstart
 
@@ -70,11 +87,11 @@ The OSRM travel-time pools derive from OpenStreetMap data
 ## Cite
 
 ```bibtex
-@software{alkaissi2026hindsight,
-  author = {Al-Kaissi, Alaa},
-  title  = {When Best-of-K Becomes a Hindsight Oracle: benchmark and code},
-  year   = {2026},
-  url    = {https://github.com/kaissi11/hindsight-oracle-routing},
+@software{AlKaissi_hindsight_oracle,
+  author  = {Al-Kaissi, Alaa},
+  title   = {When Best-of-K Becomes a Hindsight Oracle: benchmark and code},
+  year    = {2026},
+  url     = {https://github.com/kaissi11/hindsight-oracle-routing},
   version = {1.0.0}
 }
 ```
