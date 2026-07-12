@@ -71,7 +71,8 @@ python scenario_bucket_eval_v2.py --n-episodes 2 --buckets low --save-json resul
 | Review ablations (§6.4a, Table 3b, §6.8, budget sweep) | `python run_review_experiments.py` |
 | Pool seeds → tables / figures | `python aggregate_stage2_seeds.py <variant>` → `python equivalence_analysis.py` → `python make_paper_assets.py` |
 
-Hardware note: ~1 GPU-night per suite on a single RTX 3060; suite runners are resumable per seed.
+Hardware note: ~1 GPU-night per suite on an RTX 3060 Laptop GPU; suite runners are
+resumable per seed.
 
 Most per-seed suite JSONs ship in `code/results/` (tables regenerate without re-running).
 The large matched-information per-seed dumps ship as release assets; the aggregate is in-repo.
