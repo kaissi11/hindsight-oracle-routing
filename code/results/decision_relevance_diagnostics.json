@@ -1,0 +1,61 @@
+{
+  "schema_version": "decision_relevance_diagnostics.v1",
+  "complete": true,
+  "config": {
+    "instance_pool": "results/osrm_instance_pool/pool.npz",
+    "n_episodes": 40,
+    "n_nodes": 20,
+    "num_instances": 4,
+    "buckets": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "base_seed": 12345,
+    "max_steps": 0,
+    "output": "results/decision_relevance_diagnostics.json",
+    "max_steps_effective": 224
+  },
+  "provenance": {
+    "semantics": "disruptions act on OSRM-derived OD travel-time matrix arcs (spatially correlated OD-arc/reachability disruptions), advancing once per decision step",
+    "reference": "statistics computed on regenerated pre-sampled schedules; reference node = depot at t=0, random unserved node after"
+  },
+  "buckets": {
+    "low": {
+      "n_instances": 160,
+      "nearest_feasible_changed_rate": 0.003944444444444445,
+      "pairwise_arc_rank_flip_rate": 0.03914618325355888,
+      "cost_changed_share_gt5pct": 0.5510494904895972,
+      "blocked_arc_share": 0.007450877192982455,
+      "node_block_share": 0.0950248538011696,
+      "mask_change_rate": 0.002248296522556391,
+      "multiplier_mean": 1.0013374679729954,
+      "multiplier_sd": 0.05801880108606557,
+      "multiplier_lag1_autocorr": 0.9321293733242086
+    },
+    "medium": {
+      "n_instances": 160,
+      "nearest_feasible_changed_rate": 0.01111111111111111,
+      "pairwise_arc_rank_flip_rate": 0.06661569425602225,
+      "cost_changed_share_gt5pct": 0.7545016507182778,
+      "blocked_arc_share": 0.013359502923976608,
+      "node_block_share": 0.15540789473684208,
+      "mask_change_rate": 0.003781426221804511,
+      "multiplier_mean": 1.0318102381547027,
+      "multiplier_sd": 0.10331505971838033,
+      "multiplier_lag1_autocorr": 0.9229312094266298
+    },
+    "high": {
+      "n_instances": 160,
+      "nearest_feasible_changed_rate": 0.027305555555555555,
+      "pairwise_arc_rank_flip_rate": 0.09465423162880225,
+      "cost_changed_share_gt5pct": 0.8476119313527686,
+      "blocked_arc_share": 0.02089488304093567,
+      "node_block_share": 0.2434444444444444,
+      "mask_change_rate": 0.006178042763157894,
+      "multiplier_mean": 1.1129661083656348,
+      "multiplier_sd": 0.16391408029180987,
+      "multiplier_lag1_autocorr": 0.8920806280852187
+    }
+  }
+}

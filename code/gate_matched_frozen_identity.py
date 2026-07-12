@@ -5,7 +5,7 @@ import os
 import sys
 
 os.environ.setdefault("CUDA_VISIBLE_DEVICES", "")
-sys.path.insert(0, r"c:\Final Year Project\Research_Version\v6.3")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # merged layout: modules live alongside
 
 import numpy as np
 import torch
