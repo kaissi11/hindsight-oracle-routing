@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Parallel completion of the six matched-information suites.
 
-Replaces the serial tail of run_matched_information_queue.py (whose parent
-process is stopped before this runs). Measured basis for the width choice:
+Parallel alternative to the serial run_matched_information_queue.py (never
+run both at once). Measured basis for the width choice:
 one suite uses ~1 CPU core of 12 and ~32% GPU, so three concurrent suites
 saturate the GPU without CPU contention. No matched arm is wall-clock
 budgeted (no rolling-OR), and per-process numerics do not depend on machine
@@ -165,7 +165,7 @@ def main() -> None:
         print("[MATCHED-PAR] aggregation FAILED", flush=True)
         raise SystemExit(1)
     print("[MATCHED-PAR] all six suites complete; validation and aggregation passed. "
-          "Next: S6.3a write-in per MATCHED_SELECTOR_PLAN.md S5.", flush=True)
+          "The aggregate feeds the paper's matched-information tables.", flush=True)
 
 
 if __name__ == "__main__":

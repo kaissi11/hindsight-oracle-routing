@@ -8,7 +8,9 @@ Sections:
   1. Rush-hour falsification (sec.6.7): progress; paired MSA-frozen verdict when done.
   2. Review-experiment queue (run_review_experiments.py): per-job progress and,
      once finished, the headline paired deltas vs the osrm_s5 control.
-  3. Build artifacts: modification times of draft / bundle / LaTeX / final PDFs.
+  3. Build artifacts: modification times of draft / bundle / LaTeX / final PDFs
+     (the paper sources are not part of this package, so those rows read
+     "missing" here — the result sections above are the useful ones).
 
 Read-only - safe to run any time, needs only numpy.
 """

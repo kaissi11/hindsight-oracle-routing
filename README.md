@@ -17,6 +17,19 @@ search into an oracle component and a deployable online counterpart at equal sea
 width, then measures the hindsight gap directly — against a zero-compute repair
 heuristic and budget-matched rolling OR-Tools on real road matrices (Damascus, London).
 
+## Demo
+
+![Online look-8 serving 19 stops on real Damascus roads while nodes block and reopen](media/policy_demo.gif)
+
+One protocol episode (seed 32353, high-disruption bucket) on the real Damascus road
+network: the deployable **online look-8** arm commits one step at a time while zonal
+traffic drifts and nodes block/reopen mid-route (red = currently blocked). The
+closing frame reports the paired outcomes of oracle-8, repair, and rolling OR-Tools
+on the **same episode and disruption schedule** — the paper measures the gap between
+the online and hindsight-selected arms. Regenerate with
+`python code/make_demo_gif.py` (qualitative only; writes no result JSONs).
+Map data © OpenStreetMap contributors (ODbL).
+
 ## Repository layout
 
 ```text
@@ -26,8 +39,11 @@ hindsight-oracle-routing/
 ├── CITATION.cff
 ├── .zenodo.json
 ├── requirements.txt
+├── media/
+│   └── policy_demo.gif                 # README demo (regenerate: code/make_demo_gif.py)
 └── code/
     ├── scenario_bucket_eval_v2.py      # main online evaluation harness
+    ├── make_demo_gif.py                # qualitative real-map demo (media/)
     ├── matched_information_eval.py     # §6.3a matched-information experiment
     ├── research_env_v2.py              # disruption environment
     ├── tsp_model_v2.py                 # policy model
@@ -51,9 +67,10 @@ hindsight-oracle-routing/
 
 **Large matched-information dumps.** The six per-seed files
 `matched_information_h{4,8}_seed_*.json` (~2 GB total) exceed GitHub’s 100 MB
-limit, so they are **not** in the git tree. Attach them as **release assets** when
-publishing `v1.0.0` (Zenodo will archive them with the release). The aggregate used
-for §6.3a tables is in-repo at `code/results/matched_information_aggregate.json`.
+limit, so they are **not** in the git tree — they are distributed as downloadable
+**release assets** on the GitHub release (Zenodo archives them with the release).
+The aggregate used for §6.3a tables is in-repo at
+`code/results/matched_information_aggregate.json`.
 
 ## Quickstart
 

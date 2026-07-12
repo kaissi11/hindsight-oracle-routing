@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage 1: repair baselines vs learned policy on the v6.2 scenario-bucket harness.
+"""Repair baselines vs learned policy on the original (v1) scenario-bucket harness.
 
 Adds two cheap reactive baselines to the existing paired evaluation:
 
@@ -9,15 +9,15 @@ Adds two cheap reactive baselines to the existing paired evaluation:
 - reactive_nn   : myopic nearest feasible neighbor at every step.
 
 All methods are evaluated on IDENTICAL instances and IDENTICAL presampled
-disruption schedules (same machinery as v6.2/scenario_bucket_eval.py), so
-episode-level differences are paired. Reports paired deltas with bootstrap
-95% CIs for the Stage 1 decision gate.
+disruption schedules (same machinery as the frozen scenario_bucket_eval.py),
+so episode-level differences are paired. Reports paired deltas with bootstrap
+95% CIs for the decision gate.
 
-v6.2 is imported read-only; nothing there is modified.
+The frozen v1 modules are imported read-only; nothing there is modified.
 
-Run from v6.3:
+Run from the code directory:
     python scenario_bucket_eval_with_repair.py \
-        --policy-checkpoint ../v6.2/checkpoints_research_pomo/research_best.pt
+        --policy-checkpoint checkpoints_research_pomo/research_best.pt
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ import torch
 V62_DIR = Path(__file__).resolve().parent  # merged layout: frozen deps live alongside
 sys.path.insert(0, str(V62_DIR))
 
-from scenario_bucket_eval import (  # noqa: E402  (v6.2, frozen)
+from scenario_bucket_eval import (  # noqa: E402  (frozen dependency)
     SimState,
     apply_action_and_advance,
     apply_bucket,
@@ -46,10 +46,10 @@ from scenario_bucket_eval import (  # noqa: E402  (v6.2, frozen)
     run_single_rollout,
     valid_mask,
 )
-from rolling_horizon_or_baseline import two_opt_path  # noqa: E402  (v6.2, frozen)
-from research_env import ResearchEnv, ResearchEnvConfig  # noqa: E402  (v6.2, frozen)
-from connected_instance_builder import normalize_lonlat  # noqa: E402  (v6.2, frozen)
-from osrm_client import DAMASCUS_BBOX  # noqa: E402  (v6.2, frozen)
+from rolling_horizon_or_baseline import two_opt_path  # noqa: E402  (frozen dependency)
+from research_env import ResearchEnv, ResearchEnvConfig  # noqa: E402  (frozen dependency)
+from connected_instance_builder import normalize_lonlat  # noqa: E402  (frozen dependency)
+from osrm_client import DAMASCUS_BBOX  # noqa: E402  (frozen dependency)
 
 
 def init_states_from_pool(pool_lonlats, pool_durations, idx, cfg) -> list[SimState]:
@@ -186,7 +186,7 @@ class RepairController:
 
 
 # ---------------------------------------------------------------------------
-# Rollout for controller-based methods (mirrors v6.2 run_single_rollout)
+# Rollout for controller-based methods (mirrors the frozen harness's run_single_rollout)
 # ---------------------------------------------------------------------------
 
 def run_controller_rollout(init_states, schedule, make_controller, max_steps: int):

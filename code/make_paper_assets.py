@@ -142,7 +142,7 @@ def table3():
             rows.append([f"{label}: {plabel}"] +
                         [fmt(pair(agg, b, pname)) for b in BUCKETS])
     if not have:
-        rows = [["[S5 PENDING — run run_stage5_suites.py, then rerun this script]", "—", "—", "—"]]
+        rows = [["[online (s5) aggregates missing — run run_stage5_suites.py, then rerun this script]", "—", "—", "—"]]
     write_table("table3_online_lookahead",
                 "ONLINE lookahead (deployable): delivered stops (paired, 5 seeds)",
                 ["Pair", "Low", "Medium", "High"], rows)
@@ -357,4 +357,4 @@ if __name__ == "__main__":
     table2(); table3(); table4(); table5(); table6(); tables_means()
     print("Figures ->", ASSETS)
     fig_schematic(); fig_forest(); fig_effect_by_setting(); fig_tradeoff_v2()
-    print("Done. Rerun after Stage 5 suites to auto-fill table3.")
+    print("Done. Rerun after the online (s5) suites to auto-fill table3.")

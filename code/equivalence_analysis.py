@@ -1,6 +1,7 @@
-"""Equivalence + cluster-robust statistics for the Stage-5 online "tie" claims.
+"""Equivalence + cluster-robust statistics for the online look-K "tie" claims
+(the *_s5 suites; the paper's equivalence table).
 
-Addresses two review must-fixes:
+Addresses two statistical requirements:
   1. "Tie" is not statistically valid without equivalence testing (TOST).
   2. Pooled episode Wilcoxon is vulnerable to pseudo-replication; a seed-level
      cluster bootstrap must be primary (or co-primary).

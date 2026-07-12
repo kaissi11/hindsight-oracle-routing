@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Stage 2 eval: paired comparison under decision-relevant dynamics (v2 env).
+"""Main paired evaluation under decision-relevant dynamics (v2 env).
 
 Methods (all on IDENTICAL instances + IDENTICAL presampled disruption schedules):
-- policy_v2_greedy   : Stage 2 finetuned policy, greedy decoding
-- policy_v2_samplexN : Stage 2 finetuned policy, best-of-K sampling
-- policy_v1_samplexN : FROZEN v6.2 policy under v2 dynamics (ablation:
+- policy_v2_greedy   : v2-finetuned policy, greedy decoding
+- policy_v2_samplexN : v2-finetuned policy, best-of-K sampling
+- policy_v1_samplexN : FROZEN v1 policy under v2 dynamics (ablation:
                        does retraining under the new dynamics help?)
 - rolling_or         : OR-Tools re-solve every step on the CURRENT effective
                        matrix (full observability, 30 ms budget)
@@ -12,7 +12,7 @@ Methods (all on IDENTICAL instances + IDENTICAL presampled disruption schedules)
                        blocking pattern changes, using the effective matrix
                        at repair time; follows a stale plan between events
 - reactive_nn        : myopic nearest feasible neighbor on current effective
-- policy_*_lookahead : Stage 5 ONLINE test-time search — per-step best-of-K
+- policy_*_lookahead : ONLINE test-time search (look-K) — per-step best-of-K
                        completions sampled under the FROZEN current effective
                        matrix (certainty-equivalent); commits the first action
                        of the best completion. Deployable, unlike samplexN
@@ -24,9 +24,9 @@ effective matrix every step; repair sees it only at event-triggered repairs.
 That isolates "continuous adaptation" vs "event-triggered repair".
 
 Buckets scale zone_ou_sigma, edge_block_prob, node block/unblock by
-0.5/1.0/2.0 (low/medium/high), mirroring the v6.2 bucket convention.
+0.5/1.0/2.0 (low/medium/high), mirroring the v1 harness bucket convention.
 
-Run from v6.3:
+Run from the code directory:
     python scenario_bucket_eval_v2.py
 """
 from __future__ import annotations
@@ -312,7 +312,7 @@ class RepairControllerV2:
 
 
 class LookaheadControllerV2:
-    """ONLINE test-time search (Stage 5) — the deployable counterpart of
+    """ONLINE test-time search (look-K, the "s5" suites) — the deployable counterpart of
     episode-level best-of-K.
 
     Episode-level best-of-K (``policy_*_samplexN``) runs K complete
@@ -673,7 +673,7 @@ def main():
     parser.add_argument("--num-instances", type=int, default=4)
     parser.add_argument("--policy-n-samples", type=int, default=8)
     parser.add_argument("--lookahead-samples", type=int, default=8,
-                        help="K for the ONLINE lookahead policy (Stage 5); 0 disables")
+                        help="K for the ONLINE lookahead policy (look-K); 0 disables")
     parser.add_argument("--lookahead-temp", type=float, default=1.0,
                         help="sampling temperature for lookahead completions (rows 2..K-1)")
     parser.add_argument("--lookahead-2opt", action="store_true",

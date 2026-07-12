@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Aggregate Stage 2 paired results across suite seeds (mirrors stage 1 aggregator)."""
+"""Aggregate "Stage 2" (v2-dynamics suite) paired results across suite seeds
+(mirrors the stage-1 aggregator)."""
 from __future__ import annotations
 
 import json
@@ -24,7 +25,7 @@ PAIRS = {
     "v2greedy_minus_repair": ("policy_v2_greedy", "repair_nn2opt"),
     "repair_minus_rolling_or": ("repair_nn2opt", "rolling_or"),
     "repair_minus_reactive_nn": ("repair_nn2opt", "reactive_nn"),
-    # Stage 5 (online lookahead) pairs — skipped if the runs predate Stage 5.
+    # Online-lookahead ("s5") pairs — skipped if the runs predate them.
     "v2look_minus_repair": ("policy_v2_lookahead", "repair_nn2opt"),
     "v2look_minus_rolling_or": ("policy_v2_lookahead", "rolling_or"),
     "v2look_minus_v2x8": ("policy_v2_lookahead", "policy_v2_samplexN"),

@@ -1,8 +1,8 @@
 """Generate the experimental design ledger (paper Appendix C) from result-file metadata.
 
-Release-plan spec (paper_final_release_plan(2).md section 7.9): one authoritative table,
-generated from the result manifest, that makes it impossible to mistake training seeds
-for evaluation seeds or batched instances for independent observations.
+Spec: one authoritative table, generated from the result manifest, that makes it
+impossible to mistake training seeds for evaluation seeds or batched instances for
+independent observations.
 
 Every number in the emitted table is read from the recorded result JSONs:
   - evaluation seeds        <- filenames (suite glob)
@@ -30,7 +30,7 @@ RESULTS = os.path.join(HERE, "results")
 ASSETS = os.path.join(HERE, "paper", "assets")
 
 # Declarative design intent per suite. Everything numeric is read from the JSONs.
-# role vocabulary (release plan 7.9): primary | confirmation | boundary | mechanism | exploratory
+# role vocabulary: primary | confirmation | boundary | mechanism | exploratory
 MANIFEST = [
     # suite_id, glob pattern, data/city, dynamics, methods/selectors, role, paper anchor
     ("osrm-v2", "scenario_bucket_v2_osrm_seed_*.json", "Damascus OSRM",

@@ -3,8 +3,8 @@
 
 Shows per-suite state, bucket/episode progress, log freshness, and overall
 completion. Deliberately prints NO result values: the predeclared
-interpretation rules (MATCHED_SELECTOR_PLAN.md S5) are applied only after
-all six suites are complete AND validated.
+interpretation rules are applied only after all six suites are complete
+AND validated.
 
   python watch_matched_suites.py             # one snapshot
   python watch_matched_suites.py --watch 60  # refresh every 60 s until 6/6
@@ -80,7 +80,7 @@ def snapshot() -> int:
         if tail:
             print(f"  orchestrator: {tail[-1]}")
     print("  (result values withheld by design until 6/6 complete + validated; then:")
-    print("   aggregate_matched_information.py -> S6.3a per MATCHED_SELECTOR_PLAN.md S5)")
+    print("   aggregate_matched_information.py -> the paper's matched-information tables)")
     return done
 
 

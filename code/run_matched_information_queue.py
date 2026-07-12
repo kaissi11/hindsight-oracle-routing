@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Run the predeclared matched-information suites after P3 drains.
+"""Run the predeclared matched-information suites after the "P3" ablation
+queue (run_p3_extra_seeds.py / run_p3_parallel.py) drains.
 
 The process may be launched while P3 is active: it only waits and does not load
 the model or touch the GPU until every P3 result gate is complete. Runs are

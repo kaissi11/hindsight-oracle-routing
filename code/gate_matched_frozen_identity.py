@@ -1,6 +1,6 @@
-"""MATCHED_SELECTOR_PLAN gates (a)+(b) on CPU: the matched frozen arm (with
-shadow diagnostics enabled, as run by the queue) must reproduce plain look-8
-bit-identically on the same episodes."""
+"""Bit-identity gates for the matched-information experiment (paper §6.3a), on
+CPU: the matched frozen arm (with shadow diagnostics enabled, as run by the
+queue) must reproduce plain look-8 bit-identically on the same episodes."""
 import os
 import sys
 

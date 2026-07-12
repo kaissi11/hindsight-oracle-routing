@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compute-accounting extraction (final release plan Tier A#9 / Table 4).
+"""Compute-accounting extraction (the paper's per-decision compute table).
 
 Pools the recorded per-episode ``wall_sec`` of every method from the 5-seed
 Damascus control suites (no new runs, no timing games — these are the wall

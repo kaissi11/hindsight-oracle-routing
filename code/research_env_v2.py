@@ -1,5 +1,5 @@
-# research_env_v2.py — Stage 2: decision-relevant dynamics.
-# Derived from frozen v6.2/research_env.py. Deltas (see STAGE2_PLAN.md):
+# research_env_v2.py — the v2 environment: decision-relevant dynamics.
+# Derived from the frozen v1 environment (research_env.py). Deltas:
 #   1. Scalar traffic -> spatially correlated zonal OU traffic field;
 #      per-edge multiplier = mean of endpoint zone factors.
 #   2. Edge blocking via correlated incident disks (clears as a unit);
@@ -25,7 +25,7 @@ _V62 = Path(__file__).resolve().parent  # merged layout: frozen deps live alongs
 if str(_V62) not in sys.path:
     sys.path.insert(0, str(_V62))
 
-from search_utils import augment_coords_8fold  # noqa: E402  (v6.2, frozen)
+from search_utils import augment_coords_8fold  # noqa: E402  (frozen dependency)
 
 
 @dataclass
@@ -41,11 +41,11 @@ class ResearchEnvV2Config:
     auto_reset: bool = True
     min_visits: int = 3
 
-    # Node blocking (unchanged from v6.2)
+    # Node blocking (unchanged from the v1 env)
     block_prob_per_step: float = 0.03
     unblock_prob_per_step: float = 0.02
 
-    # Zonal traffic field (replaces v6.2 scalar traffic)
+    # Zonal traffic field (replaces the v1 env's scalar traffic)
     zone_grid: int = 4
     zone_ou_theta: float = 0.05      # mean reversion toward traffic_init
     zone_ou_sigma: float = 0.15      # innovation std per step (pre-smoothing)
@@ -58,7 +58,7 @@ class ResearchEnvV2Config:
     incident_clear_prob: float = 0.10
     incident_radius: float = 0.15
 
-    # Optional deterministic rush-hour cycle (Stage 5+ falsification test):
+    # Optional deterministic rush-hour cycle (the paper's §6.7 falsification test):
     # zone-phased sinusoid overlaid on the OU field. amp=0 disables (default,
     # preserves all recorded behavior). Makes the dynamics non-Markovian in
     # the observed matrix: near-future costs differ predictably from current.
@@ -75,7 +75,7 @@ class ResearchEnvV2:
     """Dynamic TSP env with spatially correlated traffic + edge blocking.
 
     Observation: [x, y, visited, is_current, blocked, time_remaining_frac]
-    (6 features, identical to v6.2 — dynamics are observed through the
+    (6 features, identical to the v1 env — dynamics are observed through the
     effective distance matrix fed to the model's edge attention).
     """
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Extend the N=100 online suite from 1 seed to 3 (fix-plan Problem 4 floor:
-'at least 3 seeds'). Runs seeds 13345 and 14345 with the exact n100_s5 flags,
+"""Extend the N=100 online suite from 1 seed to 3 (the 'at least 3 seeds'
+floor). Runs seeds 13345 and 14345 with the exact n100_s5 flags,
 sequentially, resumable; then re-aggregates so Table 3 / A.4 / Table A.5 can
 be refreshed (aggregate_stage2_seeds.py n100_s5 && equivalence_analysis.py).
 

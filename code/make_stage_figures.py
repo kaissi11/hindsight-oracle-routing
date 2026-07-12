@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage 3 figures: paired deltas with 95% CIs from the aggregate JSONs.
+"""Summary figures: paired deltas with 95% CIs from the aggregate JSONs.
 
 Reads whatever aggregates exist in results/ and writes PNGs to
 results/figures/. Rerun any time; missing variants are skipped.
@@ -7,9 +7,9 @@ results/figures/. Rerun any time; missing variants are skipped.
 Figures:
   fig_policy_vs_repair.png   - policy x8 minus repair (delivered) per bucket,
                                one series per stage x instance-distribution
-  fig_zero_shot_transfer.png - Stage 2: v2x8-v1x8 and v1x8-repair (delivered)
+  fig_zero_shot_transfer.png - v2 dynamics: v2x8-v1x8 and v1x8-repair (delivered)
   fig_time_tradeoff.png      - policy x8 minus rolling-OR: delivered vs time
-  fig_online_vs_oracle.png   - Stage 5: ONLINE lookahead vs repair, and the
+  fig_online_vs_oracle.png   - online (s5): ONLINE lookahead vs repair, and the
                                oracle gap (lookahead - samplexN); appears once
                                the *_s5 aggregates exist
 """
@@ -97,7 +97,7 @@ def fig_zero_shot():
         agg = load(fname)
         if agg is None:
             continue
-        errbar(ax, x0 - 0.10, pair_series(agg, "v1x8_minus_repair"), f"v6.2 policy zero-shot − repair ({tag})", c1)
+        errbar(ax, x0 - 0.10, pair_series(agg, "v1x8_minus_repair"), f"v1 policy zero-shot − repair ({tag})", c1)
         errbar(ax, x0, pair_series(agg, "v2x8_minus_repair"), f"fine-tuned policy − repair ({tag})", c2)
         errbar(ax, x0 + 0.10, pair_series(agg, "v2x8_minus_v1x8"), f"fine-tuned − zero-shot ({tag})", c3)
         plotted += 1
@@ -152,7 +152,7 @@ def fig_time_tradeoff():
 
 
 def fig_online_vs_oracle():
-    """Stage 5: does the completion advantage survive online (no-hindsight)
+    """Online (s5): does the completion advantage survive online (no-hindsight)
     selection? One panel: lookahead-repair per setting; plus the oracle gap."""
     sources = [
         ("stage2_aggregate_5seeds_synth_s5.json", "synthetic", "#1f77b4"),

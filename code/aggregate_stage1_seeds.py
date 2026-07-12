@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate Stage 1 paired results across suite seeds.
+"""Aggregate "Stage 1" (v1-harness repair suite) paired results across suite seeds.
 
 Pools episode-level paired deltas (policy_samplexN minus each baseline) across
 all seeds per bucket, reports per-seed means and pooled bootstrap 95% CIs.

@@ -1,4 +1,4 @@
-"""P0.12 pairing/replay validation gates (final release plan).
+"""Pairing/replay validation gates for the paired-episode contract.
 
 The paper's paired evidence relies on: (a) schedules regenerating
 bit-identically from their seed, (b) the environment stream being

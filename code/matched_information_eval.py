@@ -74,7 +74,7 @@ def score_candidate_frozen(
 ) -> CandidateValue:
     """Score a fixed sequence with the current matrix frozen.
 
-    The action/clock semantics deliberately go through the Stage-2 transition
+    The action/clock semantics deliberately go through the v2-harness transition
     function.  Thus a stop reached by the action that crosses the horizon is
     counted, matching the committed rollout harness.
     """
@@ -277,7 +277,7 @@ def _portfolio_digest(sequences: Sequence[Sequence[int]]) -> str:
 def schedule_digest(
     initial_eff: np.ndarray, schedule: Sequence[ScheduleEvent]
 ) -> str:
-    """Checksum of one pre-sampled exogenous world (P0.12 replay contract)."""
+    """Checksum of one pre-sampled exogenous world (replay contract)."""
     hasher = hashlib.sha256()
     hasher.update(np.ascontiguousarray(initial_eff).tobytes())
     for matrix, blocked in schedule:
@@ -287,7 +287,7 @@ def schedule_digest(
 
 
 class MatchedInformationController(stage2.LookaheadControllerV2):
-    """Stage-2 lookahead with an isolated candidate-scoring intervention.
+    """v2-harness lookahead with an isolated candidate-scoring intervention.
 
     Candidate construction remains in the inherited ``act`` method.
 

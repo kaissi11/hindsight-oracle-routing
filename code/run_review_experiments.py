@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Review-experiment queue (fix-plan Problems 5, 6, 8, 19) - one GPU, run
-everything sequentially, resumable, safe to start while the rush-hour run is
-still going (it WAITS for cyc_msa4 to finish before touching the GPU).
+"""Ablation queue (paper §6.4a observability, decoder strength, horizon stress,
+OR-budget sweep) - one GPU, run everything sequentially, resumable, safe to
+start while the rush-hour run is still going (it WAITS for cyc_msa4 to finish
+before touching the GPU).
 
   python run_review_experiments.py                 # wait for GPU, run all
   python run_review_experiments.py --start-now     # skip the GPU wait
@@ -21,7 +22,7 @@ Jobs (priority order - each ~ one evening on the RTX 3060; MSA jobs longer):
                                      policy SEES (env stays truthful); live
                                      control = osrm_s5 itself, no rerun needed
   dec_2opt / dec_msa4                online decoder strength under OU dynamics
-                                     (answers the "weak strawman" objection)
+                                     (rules out a too-weak online decoder)
   hstress_h6 / hstress_h4            horizon stress - releases the completion
                                      ceiling (delivered ≥97.5% of max at H=8h)
   budget_10ms / budget_100ms / budget_300ms
@@ -84,7 +85,7 @@ def wait_for_gpu() -> None:
     while buckets_done(RUSHHOUR_GATE) < 3:
         time.sleep(120)
     print("[queue] rush-hour run complete - GPU free. "
-          "Remember: fill sec.6.7 per RUSHHOUR_TRACKING.md (python check_rushhour.py).")
+          "Check the sec.6.7 verdict with: python check_rushhour.py")
     time.sleep(30)  # let the process exit and release VRAM
 
 

@@ -5,7 +5,7 @@ rolling-OR holds the makespan frontier, the oracle bound alone holds the
 completion frontier, and deployable look-8 pays oracle-level makespan for
 repair-level completion.
 
-Reads the Stage-5 aggregates; writes paper/assets/fig_pareto.png.
+Reads the online ("s5") aggregates; writes paper/assets/fig_pareto.png.
 Style matches make_stage_figures.py (same figsize family, colors, markers).
 """
 from __future__ import annotations

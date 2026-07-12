@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Extend the single-seed review ablations that carry abstract-level claims
-(REVIEW_FABLE_2026-07-09.md item P3) from 1 seed to 3: hstress_h4 first (the
+"""Extend the single-seed ablations that carry abstract-level claims (the
+"P3" batch) from 1 seed to 3: hstress_h4 first (the
 sec.6.8 inversion), then obs_base / obs_mask / obs_traffic (the sec.6.4a
 feasibility-observability decomposition). Waits for the N=100 extra-seed runs
 (run_n100_extra_seeds.py) to finish before touching the GPU; sequential on
@@ -15,9 +15,9 @@ Pairing notes:
 - hstress_h4 has a different horizon: within-run pairs only.
 After all runs land: pool per-seed paired deltas (episode bootstrap per seed,
 then across seeds); to fold into formal equivalence stats add the suites to
-SUITES in equivalence_analysis.py (>=2 seeds) and rerun. Then update the
-sec.6.8 / sec.6.4a wording per HANDOFF_AFTER_EXPERIMENTS.md sec.3 (single-seed
-labels drop; 'consistent with' may upgrade once CIs pool).
+SUITES in equivalence_analysis.py (>=2 seeds) and rerun. The paper's sec.6.8 /
+sec.6.4a wording can then drop its single-seed labels ('consistent with' may
+upgrade once CIs pool).
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ PY = sys.executable
 SEEDS = [13345, 14345]
 BUCKETS = ("low", "medium", "high")
 
-# priority order per REVIEW_FABLE_2026-07-09.md P3: hstress_h4 first, then obs_*
+# priority order: hstress_h4 first (carries the strongest claim), then obs_*
 JOBS: dict[str, list[str]] = {
     "hstress_h4":  ["--horizon-hours", "4"],
     "obs_base":    ["--policy-matrix-mode", "base"],
@@ -118,9 +118,9 @@ def main() -> None:
         print(f"[p3] FINISHED WITH FAILURES: {failures} - rerun this script to resume.")
     else:
         print("[p3] all jobs complete. Next: pool per-seed deltas (3 seeds now for "
-              "hstress_h4 + obs_*), add suites to equivalence_analysis.py SUITES, "
-              "then upgrade sec.6.8/sec.6.4a wording + limitations (8)/(9) per "
-              "REVIEW_FABLE_2026-07-09.md P3.")
+              "hstress_h4 + obs_*) with aggregate_p3_seeds.py, add the suites to "
+              "equivalence_analysis.py SUITES, then the paper's sec.6.8/sec.6.4a "
+              "wording can drop its single-seed labels.")
 
 
 if __name__ == "__main__":

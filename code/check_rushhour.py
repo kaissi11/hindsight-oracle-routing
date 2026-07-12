@@ -12,7 +12,7 @@ bootstrap 95% CI and Wilcoxon p, plus each run's look-vs-repair for context.
 Hypothesis (§6.7): under cyclical (non-Markovian) traffic, MSA > frozen.
   CONFIRMED  -> MSA − frozen > 0 with CI excluding 0 (any bucket, esp. high)
   NOT CONFIRMED at this amplitude -> CIs include 0 everywhere
-Either way the result fills the single §6.7 sentence (see RUSHHOUR_TRACKING.md §4).
+Either way the result fills the single §6.7 sentence in the paper.
 """
 from __future__ import annotations
 
@@ -89,10 +89,10 @@ def result(plain, msa):
     print("\n=== VERDICT ===")
     if any(verdict_cells):
         print("  PREDICTION CONFIRMED: scenario-scored (anticipating) lookahead beats the")
-        print("  frozen-matrix lookahead under cyclical dynamics -> fill outcome (a) in RUSHHOUR_TRACKING.md section 4.")
+        print("  frozen-matrix lookahead under cyclical dynamics (paper section 6.7, outcome a).")
     else:
         print("  NOT CONFIRMED at amplitude 0.4: MSA ties frozen under the cycle")
-        print("  -> fill outcome (b) in RUSHHOUR_TRACKING.md section 4 (still a reportable, honest result).")
+        print("  (paper section 6.7, outcome b — still a reportable, honest result).")
 
 
 if __name__ == "__main__":

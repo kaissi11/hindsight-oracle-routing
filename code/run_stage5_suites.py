@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Stage 5 suite runner — chains the 5-seed suites in priority order.
+"""Online look-K suite runner (the "s5" suites) — chains them in priority order.
 
-Priority (see STAGE5_PLAN.md / EXTERNAL_REVIEW_2026-07-02.md):
-  1. osrm_s5    (b) Damascus OSRM, N=20  — decides the decision gate
-  2. synth_s5   (a) synthetic v2 dynamics, N=20 — in-distribution corroboration
-  3. n100_s5    (d) synthetic N=100 — where the effect is largest (also
-                upgrades the old n=50 caveat to full power n=200)
-  4. london_s5  (c) London OSRM — cross-city confirmation
+Priority (these fill the paper's Table 3):
+  1. osrm_s5    Damascus OSRM, N=20 — decides the decision gate
+  2. synth_s5   synthetic v2 dynamics, N=20 — in-distribution corroboration
+  3. n100_s5    synthetic N=100 — where the effect is largest
+                (n=200 episodes across the 5 seeds)
+  4. london_s5  London OSRM — cross-city confirmation
 
 RESUMABLE: a seed whose output JSON already exists is skipped, so the script
 can be stopped/restarted at any time (power cut, interruption) and every
@@ -41,9 +41,9 @@ VARIANTS = {
         pool="", n_nodes=100, num_instances=2, n_episodes=40),
     "london_s5": dict(
         pool="results/osrm_instance_pool_london/pool.npz", n_nodes=20, num_instances=4, n_episodes=40),
-    # OPTIONAL journal-tier extra ("fuse b with d"): Damascus real roads at
-    # N=100. Not in the default ORDER — it fills no [S5-*] placeholder and
-    # needs a NEW pool first (Damascus OSRM backend up, then:
+    # OPTIONAL extra (not used by the paper): Damascus real roads at
+    # N=100. Not in the default ORDER — it needs a NEW pool first
+    # (Damascus OSRM backend up, then:
     #   python build_osrm_instance_pool.py --osrm-url http://localhost:5000 \
     #     --core-size 200 --n-nodes 100 --n-instances 160 --seed 556 \
     #     --out-dir results/osrm_instance_pool_n100

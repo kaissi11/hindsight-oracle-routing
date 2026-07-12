@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decision-relevance diagnostics for the disruption process (plan P0.15).
+"""Decision-relevance diagnostics for the disruption process (paper §3 numbers).
 
 Demonstrates that the synthetic process over real-road matrices genuinely
 changes routing decisions rather than merely scaling all costs. Everything is
@@ -141,7 +141,7 @@ def analyze_schedule(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Environment decision-relevance diagnostics (P0.15)"
+        description="Environment decision-relevance diagnostics"
     )
     parser.add_argument(
         "--instance-pool",

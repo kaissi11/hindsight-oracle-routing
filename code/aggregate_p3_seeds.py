@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pool the three-seed P3 observability and horizon-stress extensions.
+"""Pool the three-seed "P3" ablation extensions (observability + horizon stress).
 
 This script never changes the experiment JSONs. It reads the completed
 seed-12345/13345/14345 runs, computes paired hierarchical-bootstrap summaries,
