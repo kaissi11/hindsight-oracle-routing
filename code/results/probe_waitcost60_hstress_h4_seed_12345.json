@@ -1,0 +1,2941 @@
+{
+  "config": {
+    "policy_v2_checkpoint": "checkpoints_research_v2_pomo/research_v2_best.pt",
+    "policy_v1_checkpoint": "C:\\Final Year Project\\Research_Version\\01_paper1\\code\\checkpoints_research_pomo\\research_best.pt",
+    "instance_pool": "results/osrm_instance_pool/pool.npz",
+    "n_episodes": 40,
+    "n_nodes": 20,
+    "num_instances": 4,
+    "policy_n_samples": 8,
+    "lookahead_samples": 8,
+    "lookahead_temp": 1.0,
+    "lookahead_2opt": false,
+    "lookahead_scenarios": 0,
+    "traffic_cycle_amp": 0.0,
+    "traffic_cycle_period": 40,
+    "ortools_time_limit_ms": 30,
+    "policy_matrix_mode": "live",
+    "horizon_hours": 4.0,
+    "wait_cost_sec": 60.0,
+    "buckets": [
+      "high"
+    ],
+    "base_seed": 12345,
+    "save_json": "C:\\Final Year Project\\Research_Version\\01_paper1\\code\\results\\probe_waitcost60_hstress_h4_seed_12345.json"
+  },
+  "buckets": {
+    "high": {
+      "summary": {
+        "policy_v2_greedy": {
+          "time_mean": 14554.679361924378,
+          "delivered_mean": 16.8875,
+          "episode_wall_sec_mean": 1.6151785025023855
+        },
+        "policy_v2_samplexN": {
+          "time_mean": 14585.846381696498,
+          "delivered_mean": 17.29375,
+          "episode_wall_sec_mean": 12.156756060005865
+        },
+        "policy_v1_samplexN": {
+          "time_mean": 14633.989078680775,
+          "delivered_mean": 17.2625,
+          "episode_wall_sec_mean": 11.600979662509053
+        },
+        "rolling_or": {
+          "time_mean": 14235.739956377995,
+          "delivered_mean": 17.625,
+          "episode_wall_sec_mean": 2.130215802497696
+        },
+        "repair_nn2opt": {
+          "time_mean": 14437.43642776073,
+          "delivered_mean": 17.5,
+          "episode_wall_sec_mean": 0.012322945016785524
+        },
+        "reactive_nn": {
+          "time_mean": 14751.6717158565,
+          "delivered_mean": 17.54375,
+          "episode_wall_sec_mean": 0.0016774425021139905
+        },
+        "policy_v2_lookahead": {
+          "time_mean": 14547.688253719727,
+          "delivered_mean": 17.575,
+          "episode_wall_sec_mean": 12.050826672516996
+        },
+        "policy_v1_lookahead": {
+          "time_mean": 14517.405933343636,
+          "delivered_mean": 17.6125,
+          "episode_wall_sec_mean": 12.092185990000143
+        },
+        "paired_v2x8_minus_repair": {
+          "delivered_delta_mean": -0.20625,
+          "delivered_delta_ci95": [
+            -0.4,
+            -0.00625
+          ],
+          "time_delta_mean": 148.40995393576887,
+          "time_delta_ci95": [
+            28.257292171133724,
+            269.86023981202544
+          ],
+          "delivered_win_tie_loss": [
+            11,
+            4,
+            25
+          ]
+        },
+        "paired_v2x8_minus_rolling_or": {
+          "delivered_delta_mean": -0.33125,
+          "delivered_delta_ci95": [
+            -0.49375,
+            -0.175
+          ],
+          "time_delta_mean": 350.1064253185036,
+          "time_delta_ci95": [
+            219.22427873402597,
+            485.8919230504983
+          ],
+          "delivered_win_tie_loss": [
+            5,
+            10,
+            25
+          ]
+        },
+        "paired_v2x8_minus_v1x8": {
+          "delivered_delta_mean": 0.03125,
+          "delivered_delta_ci95": [
+            -0.0625,
+            0.125
+          ],
+          "time_delta_mean": -48.14269698427811,
+          "time_delta_ci95": [
+            -156.84441140221674,
+            65.15918449493287
+          ],
+          "delivered_win_tie_loss": [
+            16,
+            10,
+            14
+          ]
+        },
+        "paired_v1x8_minus_repair": {
+          "delivered_delta_mean": -0.2375,
+          "delivered_delta_ci95": [
+            -0.4375,
+            -0.03125
+          ],
+          "time_delta_mean": 196.55265092004697,
+          "time_delta_ci95": [
+            75.9092594358549,
+            314.8518477815635
+          ],
+          "delivered_win_tie_loss": [
+            11,
+            5,
+            24
+          ]
+        },
+        "paired_repair_minus_reactive_nn": {
+          "delivered_delta_mean": -0.04375,
+          "delivered_delta_ci95": [
+            -0.2,
+            0.10640624999999772
+          ],
+          "time_delta_mean": -314.23528809577186,
+          "time_delta_ci95": [
+            -484.1424191288723,
+            -146.90559785428377
+          ],
+          "delivered_win_tie_loss": [
+            14,
+            9,
+            17
+          ]
+        },
+        "paired_repair_minus_rolling_or": {
+          "delivered_delta_mean": -0.125,
+          "delivered_delta_ci95": [
+            -0.2875,
+            0.03125
+          ],
+          "time_delta_mean": 201.69647138273476,
+          "time_delta_ci95": [
+            93.82960038644507,
+            310.4008405992137
+          ],
+          "delivered_win_tie_loss": [
+            12,
+            12,
+            16
+          ]
+        },
+        "paired_v2look_minus_repair": {
+          "delivered_delta_mean": 0.075,
+          "delivered_delta_ci95": [
+            -0.09375,
+            0.25
+          ],
+          "time_delta_mean": 110.251825958994,
+          "time_delta_ci95": [
+            -23.683588501484433,
+            247.45681563560154
+          ],
+          "delivered_win_tie_loss": [
+            16,
+            9,
+            15
+          ]
+        },
+        "paired_v2look_minus_rolling_or": {
+          "delivered_delta_mean": -0.05,
+          "delivered_delta_ci95": [
+            -0.2125,
+            0.10625
+          ],
+          "time_delta_mean": 311.9482973417288,
+          "time_delta_ci95": [
+            184.51697161545775,
+            434.1951012571211
+          ],
+          "delivered_win_tie_loss": [
+            14,
+            10,
+            16
+          ]
+        },
+        "paired_v2look_minus_v2x8": {
+          "delivered_delta_mean": 0.28125,
+          "delivered_delta_ci95": [
+            0.1,
+            0.475
+          ],
+          "time_delta_mean": -38.15812797677486,
+          "time_delta_ci95": [
+            -148.65565167999654,
+            76.57920437020576
+          ],
+          "delivered_win_tie_loss": [
+            22,
+            10,
+            8
+          ]
+        },
+        "paired_v2look_minus_v1look": {
+          "delivered_delta_mean": -0.0375,
+          "delivered_delta_ci95": [
+            -0.15625,
+            0.075
+          ],
+          "time_delta_mean": 30.28232037608941,
+          "time_delta_ci95": [
+            -80.8440125760816,
+            143.84659140194097
+          ],
+          "delivered_win_tie_loss": [
+            10,
+            15,
+            15
+          ]
+        },
+        "paired_v1look_minus_repair": {
+          "delivered_delta_mean": 0.1125,
+          "delivered_delta_ci95": [
+            -0.04375,
+            0.275
+          ],
+          "time_delta_mean": 79.96950558290459,
+          "time_delta_ci95": [
+            -54.723261276341766,
+            213.83051507841157
+          ],
+          "delivered_win_tie_loss": [
+            19,
+            7,
+            14
+          ]
+        }
+      },
+      "episodes": [
+        {
+          "episode": 1,
+          "policy_v2_greedy": {
+            "time_mean": 15114.234171212789,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.8316071000881493
+          },
+          "rolling_or": {
+            "time_mean": 13299.678729210415,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.2544460999779403
+          },
+          "repair_nn2opt": {
+            "time_mean": 13826.51589750703,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0162634999724105
+          },
+          "reactive_nn": {
+            "time_mean": 15105.984593022598,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0027682000072672963
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15003.382724002766,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.031088099931367
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14290.94500684363,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.050912100006826
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14326.301102394995,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 15.144669999950565
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14581.879073818729,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 14.746171900071204
+          }
+        },
+        {
+          "episode": 2,
+          "policy_v2_greedy": {
+            "time_mean": 14820.948231606802,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.3824391999514773
+          },
+          "rolling_or": {
+            "time_mean": 14466.488818533504,
+            "delivered_mean": 19.0,
+            "delivered_strict_mean": 18.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.271790299913846
+          },
+          "repair_nn2opt": {
+            "time_mean": 14591.9893769256,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.01218920003157109
+          },
+          "reactive_nn": {
+            "time_mean": 14601.965059854758,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0015388000756502151
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14524.73078511586,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 11.203742799931206
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15050.150742879663,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 11.630848800064996
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14672.900433334771,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 15.056917099980637
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14633.582957058312,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 14.81370129995048
+          }
+        },
+        {
+          "episode": 3,
+          "policy_v2_greedy": {
+            "time_mean": 15060.006897948148,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.2834438000572845
+          },
+          "rolling_or": {
+            "time_mean": 14222.42747361833,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.1829894999973476
+          },
+          "repair_nn2opt": {
+            "time_mean": 14076.528459695903,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.010449500055983663
+          },
+          "reactive_nn": {
+            "time_mean": 14938.836496026948,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.002051500021480024
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14580.80352257711,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.36216790007893
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14886.988049632797,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.370486799976788
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15123.288208980444,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 14.825896800030023
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14322.201634358744,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 14.154969799914397
+          }
+        },
+        {
+          "episode": 4,
+          "policy_v2_greedy": {
+            "time_mean": 15093.562485330924,
+            "delivered_mean": 16.0,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 8.0,
+            "wall_sec": 1.8574326999951154
+          },
+          "rolling_or": {
+            "time_mean": 14619.352415117759,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 18.25,
+            "wall_sec": 2.0886107000987977
+          },
+          "repair_nn2opt": {
+            "time_mean": 14624.792792308914,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 11.25,
+            "wall_sec": 0.013280000071972609
+          },
+          "reactive_nn": {
+            "time_mean": 15063.884304881127,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 12.5,
+            "wall_sec": 0.0020683000329881907
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15300.743161282597,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 14.398404899984598
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14520.281567979608,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 10.5,
+            "wall_sec": 13.700627399957739
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14934.07207352552,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 11.0,
+            "wall_sec": 13.530648699961603
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14756.361793769456,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 9.25,
+            "wall_sec": 14.637994299991988
+          }
+        },
+        {
+          "episode": 5,
+          "policy_v2_greedy": {
+            "time_mean": 14726.071857979074,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 2.5968253000173718
+          },
+          "rolling_or": {
+            "time_mean": 14123.365547652187,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 16.5,
+            "wall_sec": 2.1787914000451565
+          },
+          "repair_nn2opt": {
+            "time_mean": 14258.965252130725,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.75,
+            "wall_sec": 0.012558500049635768
+          },
+          "reactive_nn": {
+            "time_mean": 14799.967908471603,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 17.0,
+            "wall_sec": 0.0023268000222742558
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14698.544557807687,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 20.576418100041337
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14622.075501735368,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 13.75,
+            "wall_sec": 20.565980899962597
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14274.837156042098,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 15.021122599951923
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14489.572922156609,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 15.75,
+            "wall_sec": 15.038232899969444
+          }
+        },
+        {
+          "episode": 6,
+          "policy_v2_greedy": {
+            "time_mean": 14181.34218461617,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 1.6209232000401244
+          },
+          "rolling_or": {
+            "time_mean": 13936.945833800286,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.25,
+            "wall_sec": 2.116005100077018
+          },
+          "repair_nn2opt": {
+            "time_mean": 14395.103481875989,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.5,
+            "wall_sec": 0.011688900063745677
+          },
+          "reactive_nn": {
+            "time_mean": 14157.799874173874,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0020418999483808875
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14227.827758567173,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 12.387569300015457
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14374.416186348073,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 1.75,
+            "wall_sec": 11.05807329993695
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14392.000611261541,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 13.675547900027595
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13966.914927457135,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 14.429863999946974
+          }
+        },
+        {
+          "episode": 7,
+          "policy_v2_greedy": {
+            "time_mean": 14846.163912263695,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 20.5,
+            "wall_sec": 2.942299099988304
+          },
+          "rolling_or": {
+            "time_mean": 14175.041805999992,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 22.0,
+            "wall_sec": 2.1329483999870718
+          },
+          "repair_nn2opt": {
+            "time_mean": 14558.345731699166,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 17.0,
+            "wall_sec": 0.011617599986493587
+          },
+          "reactive_nn": {
+            "time_mean": 15659.74528142021,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 15.0,
+            "wall_sec": 0.002589499927125871
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14693.268258150874,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 19.75,
+            "wall_sec": 23.60423240007367
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14845.991305077585,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 20.75,
+            "wall_sec": 22.869319699937478
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14856.53317330252,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 20.5,
+            "wall_sec": 13.255285200080834
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14515.563059632446,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 20.5,
+            "wall_sec": 14.609469200018793
+          }
+        },
+        {
+          "episode": 8,
+          "policy_v2_greedy": {
+            "time_mean": 15306.806801428947,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 10.25,
+            "wall_sec": 2.043280499987304
+          },
+          "rolling_or": {
+            "time_mean": 14677.035069202086,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.5,
+            "wall_sec": 2.1683368999511003
+          },
+          "repair_nn2opt": {
+            "time_mean": 14637.629955587505,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0262170999776572
+          },
+          "reactive_nn": {
+            "time_mean": 14997.120406776095,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 9.5,
+            "wall_sec": 0.0021294999169185758
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14906.517381412674,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 2.75,
+            "wall_sec": 11.810451600002125
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15036.6648912086,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 11.11056549998466
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15049.670916041638,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.25,
+            "wall_sec": 13.733692699926905
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15149.632265130364,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.25,
+            "wall_sec": 13.449266699957661
+          }
+        },
+        {
+          "episode": 9,
+          "policy_v2_greedy": {
+            "time_mean": 14992.477029607318,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.350486799958162
+          },
+          "rolling_or": {
+            "time_mean": 13992.21990437324,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 6.25,
+            "wall_sec": 2.144787299912423
+          },
+          "repair_nn2opt": {
+            "time_mean": 14141.201685083877,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.25,
+            "wall_sec": 0.011183100054040551
+          },
+          "reactive_nn": {
+            "time_mean": 15244.466030162574,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0015396999660879374
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14370.403071836887,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.888942999998108
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14736.546134663962,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.11081009998452
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14904.949706737865,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 13.440312699996866
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14113.093825420916,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.75,
+            "wall_sec": 13.613594599999487
+          }
+        },
+        {
+          "episode": 10,
+          "policy_v2_greedy": {
+            "time_mean": 14200.640997200659,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.25,
+            "wall_sec": 1.3705056000035256
+          },
+          "rolling_or": {
+            "time_mean": 13992.036431978555,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.5,
+            "wall_sec": 2.2206718999659643
+          },
+          "repair_nn2opt": {
+            "time_mean": 14413.656648211467,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.75,
+            "wall_sec": 0.014984700013883412
+          },
+          "reactive_nn": {
+            "time_mean": 14193.556033175946,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.25,
+            "wall_sec": 0.0014454999472945929
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14112.581234834026,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.76213759998791
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14918.427340443483,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 1.5,
+            "wall_sec": 11.857230299967341
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14258.733148380526,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.25,
+            "wall_sec": 13.714952199952677
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14485.629657214795,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 13.46414980001282
+          }
+        },
+        {
+          "episode": 11,
+          "policy_v2_greedy": {
+            "time_mean": 15027.74474337381,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 7.25,
+            "wall_sec": 2.061726199928671
+          },
+          "rolling_or": {
+            "time_mean": 14175.47217627322,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 12.5,
+            "wall_sec": 2.171377299935557
+          },
+          "repair_nn2opt": {
+            "time_mean": 14559.8209381119,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.5,
+            "wall_sec": 0.012949900003150105
+          },
+          "reactive_nn": {
+            "time_mean": 15097.90484929925,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 8.0,
+            "wall_sec": 0.001763500040397048
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15077.12988309805,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 7.25,
+            "wall_sec": 14.0300798000535
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14752.474141020584,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.5,
+            "wall_sec": 14.56733929994516
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14823.924046744803,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 7.25,
+            "wall_sec": 13.119086999911815
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14665.101377260777,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 7.25,
+            "wall_sec": 13.652191899949685
+          }
+        },
+        {
+          "episode": 12,
+          "policy_v2_greedy": {
+            "time_mean": 15211.455360884545,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 1.4868749000597745
+          },
+          "rolling_or": {
+            "time_mean": 14845.474846482783,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 2.167434500064701
+          },
+          "repair_nn2opt": {
+            "time_mean": 14635.173779344826,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 0.013003100058995187
+          },
+          "reactive_nn": {
+            "time_mean": 14695.33840961802,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 0.00162240001372993
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14643.330055041486,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.0,
+            "wall_sec": 11.970162000041455
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14818.723999524993,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.5,
+            "wall_sec": 12.184676600038074
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15557.380962591984,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 14.280890400055796
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15090.95506500789,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 13.900850099977106
+          }
+        },
+        {
+          "episode": 13,
+          "policy_v2_greedy": {
+            "time_mean": 14303.03715042764,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 1.7185774999670684
+          },
+          "rolling_or": {
+            "time_mean": 13104.055348150334,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.75,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 5.75,
+            "wall_sec": 2.241173999966122
+          },
+          "repair_nn2opt": {
+            "time_mean": 13942.152745020237,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.01320699998177588
+          },
+          "reactive_nn": {
+            "time_mean": 15102.41688700659,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.25,
+            "wall_sec": 0.002507199998944998
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 13993.94595969699,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 11.872164300060831
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14306.550715495217,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.247812899993733
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14416.281541282257,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 5.75,
+            "wall_sec": 15.32860389992129
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14210.733582401886,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.75,
+            "wall_sec": 15.166934799985029
+          }
+        },
+        {
+          "episode": 14,
+          "policy_v2_greedy": {
+            "time_mean": 14767.584545392367,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 15.0,
+            "wall_sec": 2.4209816000657156
+          },
+          "rolling_or": {
+            "time_mean": 14161.125596232758,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 9.75,
+            "wall_sec": 2.141302099917084
+          },
+          "repair_nn2opt": {
+            "time_mean": 14241.117199147124,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 16.5,
+            "wall_sec": 0.01666219998151064
+          },
+          "reactive_nn": {
+            "time_mean": 14824.95958023693,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 4.25,
+            "wall_sec": 0.0015440999995917082
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14582.441945230117,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 9.25,
+            "wall_sec": 16.468801700044423
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14792.479588874838,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 13.802861600066535
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14474.057975907008,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 15.0,
+            "wall_sec": 13.727135500055738
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14330.34219017863,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 14.096163400099613
+          }
+        },
+        {
+          "episode": 15,
+          "policy_v2_greedy": {
+            "time_mean": 14043.113870368648,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 13.75,
+            "wall_sec": 2.2699984000064433
+          },
+          "rolling_or": {
+            "time_mean": 13951.746183240777,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 19.25,
+            "wall_sec": 2.1739348000846803
+          },
+          "repair_nn2opt": {
+            "time_mean": 14285.74877585475,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 14.5,
+            "wall_sec": 0.0154223000863567
+          },
+          "reactive_nn": {
+            "time_mean": 14435.778489188393,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.25,
+            "wall_sec": 0.0017451000167056918
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14529.516972108115,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 11.75,
+            "wall_sec": 18.142672199988738
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14259.543845152813,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 12.75,
+            "wall_sec": 17.809017900028266
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14229.152394152243,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 12.25,
+            "wall_sec": 14.40500490006525
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14620.06998853755,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 16.25,
+            "wall_sec": 13.867837699945085
+          }
+        },
+        {
+          "episode": 16,
+          "policy_v2_greedy": {
+            "time_mean": 13995.364564438165,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 23.0,
+            "wall_sec": 3.1446968000382185
+          },
+          "rolling_or": {
+            "time_mean": 13545.377464742158,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 19.0,
+            "wall_sec": 2.2043971000239253
+          },
+          "repair_nn2opt": {
+            "time_mean": 14020.095055369859,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 12.75,
+            "wall_sec": 0.014182399958372116
+          },
+          "reactive_nn": {
+            "time_mean": 13898.24314309382,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 0.0021028999472036958
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 13984.930015208496,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 10.75,
+            "wall_sec": 20.335619000019506
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14323.745510205905,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.75,
+            "wall_sec": 18.697840800043195
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13932.087922014081,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 23.0,
+            "wall_sec": 14.717717400053516
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13671.252574843631,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 18.0,
+            "wall_sec": 14.5140724000521
+          }
+        },
+        {
+          "episode": 17,
+          "policy_v2_greedy": {
+            "time_mean": 14320.522597929421,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.25,
+            "wall_sec": 1.6559000998968259
+          },
+          "rolling_or": {
+            "time_mean": 14929.04967870306,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 31.0,
+            "wall_sec": 2.118217800045386
+          },
+          "repair_nn2opt": {
+            "time_mean": 14333.051017601734,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 9.0,
+            "wall_sec": 0.01695130008738488
+          },
+          "reactive_nn": {
+            "time_mean": 14877.328545433666,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.5,
+            "wall_sec": 0.002674400107935071
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14178.311396039555,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 12.748988900100812
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14176.66794320671,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 4.5,
+            "wall_sec": 12.382822300074622
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13939.321410934714,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 4.75,
+            "wall_sec": 14.582079900079407
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13887.177511613954,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 9.75,
+            "wall_sec": 16.522148299962282
+          }
+        },
+        {
+          "episode": 18,
+          "policy_v2_greedy": {
+            "time_mean": 14520.615343674799,
+            "delivered_mean": 15.0,
+            "delivered_strict_mean": 14.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 12.25,
+            "wall_sec": 2.1457568999612704
+          },
+          "rolling_or": {
+            "time_mean": 14710.196276770734,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 15.5,
+            "wall_sec": 2.1605389999458566
+          },
+          "repair_nn2opt": {
+            "time_mean": 14992.782092326543,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 8.75,
+            "wall_sec": 0.014945999952033162
+          },
+          "reactive_nn": {
+            "time_mean": 15248.710486666438,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 12.25,
+            "wall_sec": 0.002514599938876927
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14999.475333693847,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 9.0,
+            "wall_sec": 24.134966299985535
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15309.031887671228,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 9.75,
+            "wall_sec": 16.177952600060962
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14796.89713204124,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 12.25,
+            "wall_sec": 12.853671499993652
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15000.936525509422,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 11.75,
+            "wall_sec": 13.525513999979012
+          }
+        },
+        {
+          "episode": 19,
+          "policy_v2_greedy": {
+            "time_mean": 14249.736654250273,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 26.0,
+            "wall_sec": 3.007263800012879
+          },
+          "rolling_or": {
+            "time_mean": 14571.774221847438,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 20.75,
+            "wall_sec": 2.1596783000277355
+          },
+          "repair_nn2opt": {
+            "time_mean": 14430.873622305953,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 9.5,
+            "wall_sec": 0.012156100012362003
+          },
+          "reactive_nn": {
+            "time_mean": 14345.881432196382,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 0.5,
+            "wall_sec": 0.00133050000295043
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14244.883817349511,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 20.75,
+            "wall_sec": 20.4594444000395
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14217.894429769301,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 16.5,
+            "wall_sec": 17.91748419997748
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14875.740710135931,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 26.0,
+            "wall_sec": 13.60027319996152
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14819.875471149871,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 26.5,
+            "wall_sec": 13.40614119998645
+          }
+        },
+        {
+          "episode": 20,
+          "policy_v2_greedy": {
+            "time_mean": 14818.477359128236,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 17.75,
+            "wall_sec": 2.385141799924895
+          },
+          "rolling_or": {
+            "time_mean": 14459.543936227494,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 19.25,
+            "wall_sec": 2.0085604999912903
+          },
+          "repair_nn2opt": {
+            "time_mean": 14503.95525921619,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 0.011725599993951619
+          },
+          "reactive_nn": {
+            "time_mean": 14835.900128859203,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.25,
+            "wall_sec": 0.0011125999735668302
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14607.183613763998,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 15.75,
+            "wall_sec": 17.960461199982092
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14865.521782649103,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 19.25,
+            "wall_sec": 17.121528599993326
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14718.353947808364,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 25.25,
+            "wall_sec": 11.64791200007312
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14553.660106054636,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 25.0,
+            "wall_sec": 12.2380254000891
+          }
+        },
+        {
+          "episode": 21,
+          "policy_v2_greedy": {
+            "time_mean": 15008.579177340525,
+            "delivered_mean": 15.75,
+            "delivered_strict_mean": 14.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.1317632000427693
+          },
+          "rolling_or": {
+            "time_mean": 14666.961620609274,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.125615399912931
+          },
+          "repair_nn2opt": {
+            "time_mean": 14600.047287975449,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.011246300069615245
+          },
+          "reactive_nn": {
+            "time_mean": 15165.354857057024,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0011429000878706574
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15018.908153100227,
+            "delivered_mean": 15.75,
+            "delivered_strict_mean": 14.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.989420300000347
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14786.000941823228,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.846207900089212
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14851.615062885798,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 10.960200300090946
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14968.733667467017,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.102293999982066
+          }
+        },
+        {
+          "episode": 22,
+          "policy_v2_greedy": {
+            "time_mean": 14531.733362713518,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 23.75,
+            "wall_sec": 2.830243100062944
+          },
+          "rolling_or": {
+            "time_mean": 14628.254406909058,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 20.5,
+            "wall_sec": 2.069189399946481
+          },
+          "repair_nn2opt": {
+            "time_mean": 14881.937812155033,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 15.25,
+            "wall_sec": 0.010206399951130152
+          },
+          "reactive_nn": {
+            "time_mean": 14747.15245173571,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 19.0,
+            "wall_sec": 0.0019908000249415636
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14454.410089976482,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.75,
+            "wall_sec": 18.40423169999849
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14467.426117202069,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.75,
+            "wall_sec": 17.11440159997437
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14831.56556447476,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 25.25,
+            "wall_sec": 11.702966000069864
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14795.881532069374,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 23.5,
+            "wall_sec": 12.10061520000454
+          }
+        },
+        {
+          "episode": 23,
+          "policy_v2_greedy": {
+            "time_mean": 13825.96779930935,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.1778183999704197
+          },
+          "rolling_or": {
+            "time_mean": 14704.507335553073,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.25,
+            "wall_sec": 2.040056600002572
+          },
+          "repair_nn2opt": {
+            "time_mean": 14509.733982773601,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.01175359997432679
+          },
+          "reactive_nn": {
+            "time_mean": 14107.801167758702,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0010859000030905008
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14512.314136137209,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.371827400056645
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14122.267270526414,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.28477159992326
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14113.863981301496,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 11.846823900006711
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14248.992991877296,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.722465200000443
+          }
+        },
+        {
+          "episode": 24,
+          "policy_v2_greedy": {
+            "time_mean": 14891.623907450012,
+            "delivered_mean": 14.75,
+            "delivered_strict_mean": 14.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.75,
+            "wall_sec": 1.090320499963127
+          },
+          "rolling_or": {
+            "time_mean": 14362.609308390325,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.0955590000376105
+          },
+          "repair_nn2opt": {
+            "time_mean": 15097.27256217339,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.01155060005839914
+          },
+          "reactive_nn": {
+            "time_mean": 15566.23129369624,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 2.25,
+            "wall_sec": 0.0012648999691009521
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14599.180436540788,
+            "delivered_mean": 15.75,
+            "delivered_strict_mean": 15.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.843286199960858
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15142.741958611303,
+            "delivered_mean": 15.75,
+            "delivered_strict_mean": 15.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 2.25,
+            "wall_sec": 8.4333472000435
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14632.61273089013,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.5,
+            "wall_sec": 10.755517299985513
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15103.251422207291,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.75,
+            "wall_sec": 11.007804799941368
+          }
+        },
+        {
+          "episode": 25,
+          "policy_v2_greedy": {
+            "time_mean": 14854.438640534552,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.089138500043191
+          },
+          "rolling_or": {
+            "time_mean": 14618.173532515219,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.25,
+            "wall_sec": 2.1704172000754625
+          },
+          "repair_nn2opt": {
+            "time_mean": 14886.798152361202,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.01148959994316101
+          },
+          "reactive_nn": {
+            "time_mean": 15041.114902602021,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.25,
+            "wall_sec": 0.0012641999637708068
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15136.127131500327,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.595781899988651
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14942.88867582291,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.5,
+            "wall_sec": 10.068028600071557
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14996.397298606622,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.232213200069964
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15062.432611429285,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 12.200018199975602
+          }
+        },
+        {
+          "episode": 26,
+          "policy_v2_greedy": {
+            "time_mean": 15331.031567009453,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.5,
+            "wall_sec": 1.5365496999584138
+          },
+          "rolling_or": {
+            "time_mean": 14486.167908297835,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.129033499979414
+          },
+          "repair_nn2opt": {
+            "time_mean": 14605.703637980367,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.009723600000143051
+          },
+          "reactive_nn": {
+            "time_mean": 15610.696527170137,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0012283999240025878
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15143.916323857804,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 9.717935399967246
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15243.498616770765,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.25,
+            "wall_sec": 10.180660600075498
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15224.288614567944,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.5,
+            "wall_sec": 11.170226900023408
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15051.205837815709,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 6.25,
+            "wall_sec": 10.886600200086832
+          }
+        },
+        {
+          "episode": 27,
+          "policy_v2_greedy": {
+            "time_mean": 14907.748587892083,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.1039043000200763
+          },
+          "rolling_or": {
+            "time_mean": 14474.89951090076,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.5,
+            "wall_sec": 2.098361400072463
+          },
+          "repair_nn2opt": {
+            "time_mean": 14980.31868761163,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.009596100077033043
+          },
+          "reactive_nn": {
+            "time_mean": 15056.338513902152,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0011060999240726233
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14689.597398456724,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.0484182999935
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14833.4464939287,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.151781999971718
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14751.34269848117,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 11.779803800047375
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14794.503616001975,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.778379300027154
+          }
+        },
+        {
+          "episode": 28,
+          "policy_v2_greedy": {
+            "time_mean": 15542.75293059007,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 1.7912780999904498
+          },
+          "rolling_or": {
+            "time_mean": 14467.866030802496,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.176375799928792
+          },
+          "repair_nn2opt": {
+            "time_mean": 14367.85605352709,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.009893700014799833
+          },
+          "reactive_nn": {
+            "time_mean": 13804.850190770378,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0012191999703645706
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15164.512914024443,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.464482799987309
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15543.687620279583,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.177303000004031
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14721.90583560152,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.432572700083256
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15634.790620700329,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.535551200038753
+          }
+        },
+        {
+          "episode": 29,
+          "policy_v2_greedy": {
+            "time_mean": 14477.54702879569,
+            "delivered_mean": 16.0,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.7996523000765592
+          },
+          "rolling_or": {
+            "time_mean": 14533.900982427993,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 9.75,
+            "wall_sec": 2.1218507000012323
+          },
+          "repair_nn2opt": {
+            "time_mean": 15252.439700239915,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 9.5,
+            "wall_sec": 0.008081600069999695
+          },
+          "reactive_nn": {
+            "time_mean": 14781.042065968544,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0012095000129193068
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15617.601772001972,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 6.747108699986711
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14845.16321606316,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 6.9800583000760525
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14817.188295937087,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 8.75,
+            "wall_sec": 14.18956840003375
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14119.96021550546,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.92580040008761
+          }
+        },
+        {
+          "episode": 30,
+          "policy_v2_greedy": {
+            "time_mean": 14493.032145305073,
+            "delivered_mean": 15.25,
+            "delivered_strict_mean": 14.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.0,
+            "wall_sec": 0.971799899940379
+          },
+          "rolling_or": {
+            "time_mean": 14716.177908168356,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 1.9783284000586718
+          },
+          "repair_nn2opt": {
+            "time_mean": 14655.964295853328,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 6.25,
+            "wall_sec": 0.010100600076839328
+          },
+          "reactive_nn": {
+            "time_mean": 14991.67759899856,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 0.0013272999785840511
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14659.438564778577,
+            "delivered_mean": 15.25,
+            "delivered_strict_mean": 14.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 6.9656852999469265
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15115.274083989334,
+            "delivered_mean": 15.25,
+            "delivered_strict_mean": 14.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 3.25,
+            "wall_sec": 6.846660600043833
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14856.933154966411,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 4.75,
+            "wall_sec": 9.25638770009391
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14667.418546667413,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 9.092014200054109
+          }
+        },
+        {
+          "episode": 31,
+          "policy_v2_greedy": {
+            "time_mean": 14403.668985268137,
+            "delivered_mean": 14.75,
+            "delivered_strict_mean": 14.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.7186688999645412
+          },
+          "rolling_or": {
+            "time_mean": 14074.503156849569,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.0053410000400618
+          },
+          "repair_nn2opt": {
+            "time_mean": 14824.60033304556,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.008730400004424155
+          },
+          "reactive_nn": {
+            "time_mean": 14334.515648410192,
+            "delivered_mean": 15.75,
+            "delivered_strict_mean": 15.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0009816000238060951
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14870.760620813478,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 6.184444000013173
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15207.769017392235,
+            "delivered_mean": 16.0,
+            "delivered_strict_mean": 15.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 6.161565899965353
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14219.876384144789,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.57659169996623
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14883.06451119406,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.023151300032623
+          }
+        },
+        {
+          "episode": 32,
+          "policy_v2_greedy": {
+            "time_mean": 14067.97790927994,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.8647302000317723
+          },
+          "rolling_or": {
+            "time_mean": 13793.65771001195,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 6.75,
+            "wall_sec": 2.1268968998920172
+          },
+          "repair_nn2opt": {
+            "time_mean": 13864.126689122624,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.5,
+            "wall_sec": 0.010982900043018162
+          },
+          "reactive_nn": {
+            "time_mean": 14150.494046516196,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.5,
+            "wall_sec": 0.0016667000018060207
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14052.18287534416,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.721340899937786
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 13892.243009799218,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.330271200044081
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13904.776099745091,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 7.5,
+            "wall_sec": 9.308094400097616
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14034.117695962963,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.747356500010937
+          }
+        },
+        {
+          "episode": 33,
+          "policy_v2_greedy": {
+            "time_mean": 14193.87554469554,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.848042199970223
+          },
+          "rolling_or": {
+            "time_mean": 14340.493455010579,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.0333324000239372
+          },
+          "repair_nn2opt": {
+            "time_mean": 14374.88519610929,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.009936200105585158
+          },
+          "reactive_nn": {
+            "time_mean": 14828.677505827445,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0012899000430479646
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14425.638471333476,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.495217200019397
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14433.211832798825,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.04120109998621
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14041.589230105328,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 8.932514799991623
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14436.085719944556,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.987072900054045
+          }
+        },
+        {
+          "episode": 34,
+          "policy_v2_greedy": {
+            "time_mean": 14482.499167002105,
+            "delivered_mean": 15.5,
+            "delivered_strict_mean": 14.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.7893204999854788
+          },
+          "rolling_or": {
+            "time_mean": 14528.32376464122,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 2.0820518999826163
+          },
+          "repair_nn2opt": {
+            "time_mean": 14151.020966876542,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.011565799941308796
+          },
+          "reactive_nn": {
+            "time_mean": 15926.179285864753,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.001229400048032403
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15198.458533057425,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.254367900080979
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 14693.705157368315,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 7.274655899964273
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15264.999177180121,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.984700400033034
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14743.855202061457,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 10.429044499993324
+          }
+        },
+        {
+          "episode": 35,
+          "policy_v2_greedy": {
+            "time_mean": 12860.513298794933,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 1.273494299966842
+          },
+          "rolling_or": {
+            "time_mean": 12762.543313835333,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.75,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 2.5,
+            "wall_sec": 2.234173099976033
+          },
+          "repair_nn2opt": {
+            "time_mean": 12691.359092642884,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.75,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 4.25,
+            "wall_sec": 0.012361499946564436
+          },
+          "reactive_nn": {
+            "time_mean": 13388.942095531613,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0022360000293701887
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 13026.896403931374,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 3.25,
+            "wall_sec": 9.095388900022954
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 13394.047092046498,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.75,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 2.5,
+            "wall_sec": 8.484558900003321
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 12758.240613266587,
+            "delivered_mean": 18.5,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 9.965035300003365
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 12607.672347389205,
+            "delivered_mean": 18.75,
+            "delivered_strict_mean": 18.75,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 10.028006999986246
+          }
+        },
+        {
+          "episode": 36,
+          "policy_v2_greedy": {
+            "time_mean": 13362.110484488516,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 1.75,
+            "wall_sec": 0.9936464000493288
+          },
+          "rolling_or": {
+            "time_mean": 13132.070210424528,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 9.25,
+            "wall_sec": 2.150888300035149
+          },
+          "repair_nn2opt": {
+            "time_mean": 13484.306720300596,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 2.5,
+            "wall_sec": 0.011376900016330183
+          },
+          "reactive_nn": {
+            "time_mean": 14461.82120688145,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 8.75,
+            "wall_sec": 0.0015109000960364938
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 13393.251190612818,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 2.25,
+            "wall_sec": 8.688454100047238
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 13813.129792062444,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.5,
+            "wall_sec": 8.976506800041534
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13374.641205597825,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 1.5,
+            "wall_sec": 8.837766000069678
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13499.57849433742,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 10.25,
+            "wall_sec": 9.029056300059892
+          }
+        },
+        {
+          "episode": 37,
+          "policy_v2_greedy": {
+            "time_mean": 13607.175895734887,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 18.0,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 15.0,
+            "wall_sec": 1.5647951000137255
+          },
+          "rolling_or": {
+            "time_mean": 13480.604197824385,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 18.75,
+            "wall_sec": 2.1195133000146598
+          },
+          "repair_nn2opt": {
+            "time_mean": 14309.13594633546,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 14.75,
+            "wall_sec": 0.012198699987493455
+          },
+          "reactive_nn": {
+            "time_mean": 14168.39997114311,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.25,
+            "wait_steps_mean": 15.0,
+            "wall_sec": 0.0018914000829681754
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 13656.452499623661,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 5.0,
+            "wall_sec": 11.652803199947812
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 13627.432331130105,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 8.75,
+            "wall_sec": 11.45160140004009
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13597.19331823623,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 16.5,
+            "wall_sec": 9.215263799997047
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13543.465671286322,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 18.25,
+            "late_arrival_mean": 0.0,
+            "wait_steps_mean": 15.25,
+            "wall_sec": 9.061147699947469
+          }
+        },
+        {
+          "episode": 38,
+          "policy_v2_greedy": {
+            "time_mean": 14124.809514298111,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 11.75,
+            "wall_sec": 1.463774700067006
+          },
+          "rolling_or": {
+            "time_mean": 13915.475660134842,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 11.25,
+            "wall_sec": 2.0893367999233305
+          },
+          "repair_nn2opt": {
+            "time_mean": 14487.938188657032,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 10.5,
+            "wall_sec": 0.010247500031255186
+          },
+          "reactive_nn": {
+            "time_mean": 14647.39182776506,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 7.75,
+            "wall_sec": 0.001802799990400672
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 14017.692105620488,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 8.0,
+            "wall_sec": 9.750480500049889
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 13801.034304585282,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 6.75,
+            "wall_sec": 8.586812500027008
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 13991.928316129688,
+            "delivered_mean": 18.25,
+            "delivered_strict_mean": 17.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 13.5,
+            "wall_sec": 8.817414200049825
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 13770.895255861446,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 13.5,
+            "wall_sec": 8.659829000011086
+          }
+        },
+        {
+          "episode": 39,
+          "policy_v2_greedy": {
+            "time_mean": 14997.312847879006,
+            "delivered_mean": 15.5,
+            "delivered_strict_mean": 14.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 0.925573299988173
+          },
+          "rolling_or": {
+            "time_mean": 15410.820931032706,
+            "delivered_mean": 17.0,
+            "delivered_strict_mean": 16.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 2.026296199997887
+          },
+          "repair_nn2opt": {
+            "time_mean": 14928.489283798433,
+            "delivered_mean": 16.75,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 0.009771500015631318
+          },
+          "reactive_nn": {
+            "time_mean": 14662.211296721449,
+            "delivered_mean": 16.25,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 0.0011467000003904104
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15280.151391893953,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.25,
+            "wall_sec": 7.559465499944054
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15196.617865892757,
+            "delivered_mean": 16.0,
+            "delivered_strict_mean": 15.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 7.056371800019406
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 15539.964887676695,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 7.705410999944434
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 15869.809566461892,
+            "delivered_mean": 16.5,
+            "delivered_strict_mean": 15.5,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 1.0,
+            "wall_sec": 7.748783699935302
+          }
+        },
+        {
+          "episode": 40,
+          "policy_v2_greedy": {
+            "time_mean": 14622.86892353127,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.75,
+            "wall_sec": 1.0664652000414208
+          },
+          "rolling_or": {
+            "time_mean": 14373.179552623189,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 10.75,
+            "wall_sec": 2.0300218000775203
+          },
+          "repair_nn2opt": {
+            "time_mean": 15074.02275556447,
+            "delivered_mean": 17.25,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 9.25,
+            "wall_sec": 0.010466299951076508
+          },
+          "reactive_nn": {
+            "time_mean": 14500.188240374906,
+            "delivered_mean": 17.5,
+            "delivered_strict_mean": 16.75,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 0.0,
+            "wall_sec": 0.0010861000046133995
+          },
+          "policy_v2_samplexN": {
+            "time_mean": 15256.412808436738,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.75,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 8.5715866999235
+          },
+          "policy_v1_samplexN": {
+            "time_mean": 15152.857178754462,
+            "delivered_mean": 17.75,
+            "delivered_strict_mean": 17.25,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 3.5,
+            "wall_sec": 8.358227899996564
+          },
+          "policy_v2_lookahead": {
+            "time_mean": 14860.12310537911,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.5,
+            "late_arrival_mean": 0.5,
+            "wait_steps_mean": 10.25,
+            "wall_sec": 8.702573499991558
+          },
+          "policy_v1_lookahead": {
+            "time_mean": 14995.985298929147,
+            "delivered_mean": 18.0,
+            "delivered_strict_mean": 17.0,
+            "late_arrival_mean": 1.0,
+            "wait_steps_mean": 4.0,
+            "wall_sec": 8.77515429991763
+          }
+        }
+      ]
+    }
+  }
+}

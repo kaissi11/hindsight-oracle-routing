@@ -76,6 +76,11 @@ class SimStateV2:
     elapsed_time: float
     horizon_sec: float
     n_nodes: int
+    # Dual-count bookkeeping (pure accounting, added for the deadline-semantics
+    # audit; never read by any controller, mask, or scoring path):
+    strict_delivered: int = 0   # customers whose ARRIVAL time is <= H
+    late_arrivals: int = 0      # departed before H but arrived after H
+    wait_steps: int = 0         # steps spent waiting (no feasible action)
 
 
 def smooth3x3(eps: np.ndarray) -> np.ndarray:
@@ -158,6 +163,12 @@ def valid_mask_v2(state: SimStateV2) -> np.ndarray:
 # (node features, incl. the blocked flag, are unchanged in every mode).
 POLICY_MATRIX_MODE = "live"
 
+# Wait-costs-time probe (deadline-semantics audit): seconds of elapsed time
+# charged per wait step. 0.0 = recorded semantics (waits are free; the
+# simulator is decision-indexed). Nonzero makes waiting consume horizon,
+# e.g. 60 s = a dispatcher re-poll interval.
+WAIT_COST_SEC = 0.0
+
 
 def policy_view_matrix(state: SimStateV2) -> np.ndarray:
     mode = POLICY_MATRIX_MODE
@@ -184,6 +195,15 @@ def apply_action_and_advance_v2(state: SimStateV2, action: int, event) -> None:
         state.elapsed_time += travel if np.isfinite(travel) else 0.25 * state.horizon_sec
         state.current_node = int(action)
         state.visited[action] = True
+        # Dual accounting: the recorded KPI counts on departure-before-H (the
+        # loop guard); the strict variant requires arrival <= H.
+        if state.elapsed_time <= state.horizon_sec:
+            state.strict_delivered += 1
+        else:
+            state.late_arrivals += 1
+    else:
+        state.wait_steps += 1
+        state.elapsed_time += WAIT_COST_SEC
     state.eff_dist = event[0]
     state.node_blocked = event[1].copy()
 
@@ -570,6 +590,9 @@ def run_rollout_v2(init_states, init_effs, schedules, max_steps: int, act_fn):
     return {
         "time_mean": float(np.mean([s.elapsed_time for s in states])),
         "delivered_mean": float(np.mean([int(s.visited[1:].sum()) for s in states])),
+        "delivered_strict_mean": float(np.mean([int(s.strict_delivered) for s in states])),
+        "late_arrival_mean": float(np.mean([int(s.late_arrivals) for s in states])),
+        "wait_steps_mean": float(np.mean([int(s.wait_steps) for s in states])),
     }
 
 
@@ -694,13 +717,19 @@ def main():
                              "use the true effective matrix")
     parser.add_argument("--horizon-hours", type=float, default=8.0,
                         help="mission horizon H in hours (horizon-stress / ceiling ablation)")
+    parser.add_argument("--wait-cost-sec", type=float, default=0.0,
+                        help="wait-costs-time probe: seconds of elapsed time charged per "
+                             "wait step (0 = recorded decision-indexed semantics)")
     parser.add_argument("--buckets", nargs="+", default=["low", "medium", "high"])
     parser.add_argument("--base-seed", type=int, default=12345)
     parser.add_argument("--save-json", default="results/scenario_bucket_v2.json")
     args = parser.parse_args()
 
-    global POLICY_MATRIX_MODE
+    global POLICY_MATRIX_MODE, WAIT_COST_SEC
     POLICY_MATRIX_MODE = args.policy_matrix_mode
+    WAIT_COST_SEC = args.wait_cost_sec
+    if WAIT_COST_SEC:
+        print(f"[STAGE2] WAIT-COSTS-TIME PROBE: {WAIT_COST_SEC:.0f} s per wait step")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     policy_v2, ckpt_v2 = load_policy(args.policy_v2_checkpoint, device)
