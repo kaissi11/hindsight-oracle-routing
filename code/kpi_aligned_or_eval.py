@@ -157,6 +157,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--base-seed", type=int, default=12345)
     parser.add_argument("--max-steps", type=int, default=0)
     parser.add_argument(
+        "--horizon-hours", type=float, default=8.0,
+        help="mission horizon H in hours (pair H=4 runs with the recorded "
+             "hstress_h4 suites)",
+    )
+    parser.add_argument(
         "--reference",
         default="results/scenario_bucket_v2_osrm_s5_seed_12345.json",
         help="recorded control suite for cross-run pairing; empty to skip",
@@ -234,6 +239,7 @@ def main(argv: Sequence[str] | None = None) -> None:
             ),
             bucket,
         )
+        cfg.time_horizon_sec = args.horizon_hours * 3600.0
         bucket_records: list[dict[str, Any]] = []
         output["buckets"][bucket] = {"episodes": bucket_records}
         started = time.perf_counter()
