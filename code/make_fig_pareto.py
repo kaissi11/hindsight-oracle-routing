@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Figure 6 (paper sec. 6.6): absolute completion-makespan positions per method
 per bucket, with the per-bucket Pareto frontier — shows no method dominates:
-rolling-OR holds the makespan frontier, the oracle bound alone holds the
-completion frontier, and deployable look-8 pays oracle-level makespan for
-repair-level completion.
+rolling-OR holds the makespan frontier, the hindsight-selected bound alone
+holds the completion frontier, and deployable look-8 pays oracle-level
+makespan for repair-level completion.
 
 Reads the online ("s5") aggregates; writes paper/assets/fig_pareto.png.
 Style matches make_stage_figures.py (same figsize family, colors, markers).
@@ -25,16 +25,24 @@ SIZES = {"low": 40, "medium": 80, "high": 130}
 
 # fixed categorical order (palette validated: dataviz six-checks, light mode)
 METHODS = [
-    ("policy_v1_samplexN", "oracle-8 (upper bound)", "#9467bd", "^"),
+    ("policy_v1_samplexN", "oracle-8 (hindsight bound)", "#9467bd", "^"),
     ("policy_v1_lookahead", "look-8 (online)", "#d62728", "o"),
     ("rolling_or", "rolling-OR", "#1f77b4", "s"),
-    ("repair_nn2opt", "repair (free)", "#2ca02c", "D"),
+    ("repair_nn2opt", "repair (lightweight)", "#2ca02c", "D"),
 ]
 
+# seed/episode counts are derived from the aggregate at plot time (never stale)
 PANELS = [
-    ("stage2_aggregate_5seeds_osrm_s5.json", "Damascus OSRM, N=20 (n=200)"),
-    ("stage2_aggregate_5seeds_n100_s5.json", "Synthetic, N=100 (n=40, 1 seed)"),
+    ("stage2_aggregate_5seeds_osrm_s5.json", "Damascus OSRM, N=20"),
+    ("stage2_aggregate_5seeds_n100_s5.json", "Synthetic, N=100"),
 ]
+
+
+def panel_title(agg, base):
+    seeds = agg.get("seeds") or []
+    n = agg["buckets"]["low"].get("n_episodes_pooled")
+    tag = f"{len(seeds)} seed{'s' if len(seeds) != 1 else ''}" if seeds else "seeds n/a"
+    return f"{base} ({tag}" + (f", n={n}/bucket)" if n else ")")
 
 
 def frontier(points):
@@ -50,8 +58,9 @@ def frontier(points):
 
 def main():
     fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.3))
-    for ax, (fname, title) in zip(axes, PANELS):
+    for ax, (fname, base_title) in zip(axes, PANELS):
         agg = json.loads((RESULTS / fname).read_text(encoding="utf-8"))
+        title = panel_title(agg, base_title)
         for b in BUCKETS:
             mm = agg["buckets"][b]["method_means"]
             pts = []

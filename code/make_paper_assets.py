@@ -121,8 +121,8 @@ def table2():
             continue
         rows.append([label] + [fmt(pair(agg, b, f"{prefix}_minus_repair")) for b in BUCKETS])
     write_table("table2_oracle_vs_repair",
-                "Zero-shot policy (oracle-8, upper bound) minus repair: delivered stops "
-                "(paired, 5 seeds, n=200/bucket)",
+                "Zero-shot policy (oracle-8, hindsight-selected bound) minus repair: "
+                "delivered stops (paired, 5 seeds, n=200/bucket)",
                 ["Setting", "Low", "Medium", "High"], rows)
 
 
@@ -226,7 +226,8 @@ def fig_schematic():
         ax.set_xlabel("time →", fontsize=9)
 
     ax = axes[0]
-    ax.set_title("(a) Episode-level best-of-8  —  ORACLE upper bound", fontsize=10)
+    ax.set_title("(a) Episode-level best-of-8 — hindsight-selected bound\n"
+                 "(over its own 8 trajectories; not a policy)", fontsize=10)
     ys = np.linspace(1, 7.4, 8)
     best = 5
     for i, y0 in enumerate(ys):
@@ -287,7 +288,8 @@ def fig_forest():
     ax.set_yticks(ypos)
     ax.set_yticklabels([r[0] for r in rows], fontsize=8)
     ax.set_xlabel("Delivered stops: zero-shot policy (oracle-8) − repair, 95% CI")
-    ax.set_title("Positive in all 18 recorded setting × bucket cells", fontsize=10)
+    ax.set_title(f"Positive in all {len(rows)} recorded setting × bucket cells",
+                 fontsize=10)
     ax.grid(axis="y", visible=False)
     fig.tight_layout()
     fig.savefig(ASSETS / "fig_forest_consistency.png", dpi=200)
@@ -298,7 +300,8 @@ def fig_forest():
 def fig_effect_by_setting():
     order = [SETTINGS[2], SETTINGS[3], SETTINGS[4], SETTINGS[5]]
     labels = ["Syn N=20", "Damascus N=20", "London N=20", "Syn N=100"]
-    fig, ax = plt.subplots(figsize=(6.8, 4.0))
+    n_cust = [19.0, 19.0, 19.0, 99.0]
+    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.0))
     x = np.arange(len(order), dtype=float)
     for bi, b in enumerate(BUCKETS):
         means, los, his = [], [], []
@@ -309,19 +312,29 @@ def fig_effect_by_setting():
             lo, hi = pr["delivered_delta_ci95"] if pr else (np.nan, np.nan)
             los.append(lo); his.append(hi)
         means, los, his = map(np.array, (means, los, his))
-        ax.errorbar(x + (bi - 1) * 0.09, means, yerr=[means - los, his - means],
-                    color=BUCKET_BLUES[bi], marker=["o", "s", "^"][bi], ms=5.5,
-                    lw=1.8, capsize=3.5, label=f"{b} disruption")
-    ax.axhline(0, color=C["muted"], lw=0.9, ls="--")
-    ax.set_xticks(x); ax.set_xticklabels(labels)
-    ax.set_ylabel("Delivered stops: policy (oracle-8) − repair, 95% CI")
-    ax.set_title("The advantage transfers out-of-distribution and grows ~10× with scale\n"
-                 "(one un-retrained checkpoint, v2 dynamics)", fontsize=10)
-    ax.legend(fontsize=8.5, frameon=False)
-    fig.tight_layout()
+        scale = np.array(n_cust)
+        for ax, div, ylab in (
+                (axes[0], np.ones(4), "Delivered stops (raw)"),
+                (axes[1], scale / 100.0, "Stops per 100 customers")):
+            ax.errorbar(x + (bi - 1) * 0.09, means / div,
+                        yerr=[(means - los) / div, (his - means) / div],
+                        color=BUCKET_BLUES[bi], marker=["o", "s", "^"][bi],
+                        ms=5.5, lw=1.8, capsize=3.5,
+                        label=f"{b} disruption" if ax is axes[0] else None)
+            ax.set_ylabel(f"Policy (oracle-8) − repair: {ylab}, 95% CI",
+                          fontsize=9)
+    for ax, sub in zip(axes, ("(a) raw effect grows with route size",
+                              "(b) per-customer rate stays comparable")):
+        ax.axhline(0, color=C["muted"], lw=0.9, ls="--")
+        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=8.5)
+        ax.set_title(sub, fontsize=10)
+    fig.suptitle("Out-of-distribution transfer under the hindsight-selected "
+                 "bound (one un-retrained checkpoint, v2 dynamics)", fontsize=10)
+    axes[0].legend(fontsize=8.5, frameon=False)
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
     fig.savefig(ASSETS / "fig_effect_by_setting.png", dpi=200)
     plt.close(fig)
-    print("  [fig] fig_effect_by_setting")
+    print("  [fig] fig_effect_by_setting (2 panels)")
 
 
 def fig_tradeoff_v2():

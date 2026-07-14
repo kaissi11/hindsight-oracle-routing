@@ -153,17 +153,17 @@ def fig_time_tradeoff():
 
 def fig_online_vs_oracle():
     """Online (s5): does the completion advantage survive online (no-hindsight)
-    selection? One panel: lookahead-repair per setting; plus the oracle gap."""
+    selection? Two panels: (a) look-8 - repair; (b) the protocol gap
+    (look-8 - oracle-8). Per-setting series, seed counts derived at plot time."""
     sources = [
         ("stage2_aggregate_5seeds_synth_s5.json", "synthetic", "#1f77b4"),
         ("stage2_aggregate_5seeds_osrm_s5.json", "Damascus OSRM", "#d62728"),
         ("stage2_aggregate_5seeds_london_s5.json", "London OSRM", "#2ca02c"),
         ("stage2_aggregate_5seeds_n100_s5.json", "N=100 synthetic", "#9467bd"),
     ]
-    fig, ax = plt.subplots(figsize=(7, 4.2))
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.2), sharex=True)
     x0 = np.arange(len(BUCKETS), dtype=float)
     plotted = 0
-    seed_tags = []
     for i, (fname, tag, color) in enumerate(sources):
         agg = load(fname)
         # headline policy is zero-shot v1 — plot the v1 pairs (fall back to v2
@@ -176,28 +176,31 @@ def fig_online_vs_oracle():
         if rep not in pairs:
             continue
         n_seeds = len(agg.get("seeds", [])) or 5
-        seed_tags.append(f"{tag}: {n_seeds}")
-        errbar(ax, x0 + (i - 1.5) * 0.08, pair_series(agg, rep),
-               f"online look-8 − repair ({tag})", color)
-        errbar(ax, x0 + (i - 1.5) * 0.08 + 0.04, pair_series(agg, gap),
-               f"hindsight gap: look-8 − oracle-8 ({tag})", color)
+        label = f"{tag} ({n_seeds} seeds)"
+        errbar(axes[0], x0 + (i - 1.5) * 0.09, pair_series(agg, rep), label, color)
+        errbar(axes[1], x0 + (i - 1.5) * 0.09, pair_series(agg, gap), label, color)
         plotted += 1
     if plotted == 0:
         plt.close(fig)
         return 0
-    ax.axhline(0, color="gray", lw=0.8, ls="--")
-    ax.set_xticks(x0)
-    ax.set_xticklabels([b.capitalize() for b in BUCKETS])
-    ax.set_xlabel("Disruption bucket")
-    ax.set_ylabel("Delivered stops delta (95% CI)")
-    # keep the title short enough for the 7-in canvas; per-setting seed counts
-    # live in Table 3 / the caption (stale long titles overflowed the edge)
-    ax.set_title("Online lookahead vs repair, and the hindsight gap (look-8 − oracle-8)\n"
-                 "(paired, zero-shot v1; per-setting seed counts in Table 3)",
-                 fontsize=10)
-    ax.legend(fontsize=7)
-    fig.tight_layout()
+    for ax, sub in zip(axes, ("(a) online look-8 − repair: hugs zero",
+                              "(b) protocol gap look-8 − oracle-8: "
+                              "significant everywhere")):
+        ax.axhline(0, color="gray", lw=0.8, ls="--")
+        ax.set_xticks(x0)
+        ax.set_xticklabels([b.capitalize() for b in BUCKETS])
+        ax.set_xlabel("Disruption bucket")
+        ax.set_title(sub, fontsize=10)
+    axes[0].set_ylabel("Delivered stops delta (95% CI)")
+    axes[0].legend(fontsize=7.5)
+    fig.suptitle("Most of the best-of-K advantage does not survive online "
+                 "selection (paired, zero-shot v1)", fontsize=10.5)
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
     fig.savefig(FIGS / "fig_online_vs_oracle.png", dpi=200)
+    assets = Path(__file__).resolve().parent / "paper" / "assets"
+    if assets.exists():
+        fig2 = FIGS / "fig_online_vs_oracle.png"
+        (assets / "fig_online_vs_oracle.png").write_bytes(fig2.read_bytes())
     plt.close(fig)
     return plotted
 

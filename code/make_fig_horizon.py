@@ -83,7 +83,8 @@ def main():
     axes[0].legend(fontsize=8, loc="upper left", title=None)
     fig.suptitle(f"The horizon-stress inversion (Damascus; seeds: {counts}): "
                  "as the deadline binds, the deployable lookahead pulls ahead of repair\n"
-                 "and episode-level best-of-K stops being an upper bound",
+                 "and overtakes the trajectory-hindsight metric, which bounds only "
+                 "its own K rollouts, not other controllers",
                  fontsize=10)
     fig.tight_layout(rect=(0, 0, 1, 0.90))
     ASSETS.mkdir(parents=True, exist_ok=True)
